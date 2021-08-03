@@ -306,20 +306,7 @@ vector<Car> FindCars(double userLatitude, double userLongitude, double inputDist
                 getline(ss, tp, ',');
                 carID = stoi(tp);
             }
-            /*
-            // Haversine formula for calculating distance
-            double x = (userLatitude - latitude) * M_PI / 180.0;
-            double y = (userLongitude - longitude) * M_PI / 180.0;
-
-            latitude = (latitude)*M_PI / 180.0;
-            userLatitude = (userLatitude)*M_PI / 180.0;
-
-            double a = pow(sin(x / 2), 2) + pow(sin(y / 2), 2) * cos(latitude) * cos(userLatitude);
-            double rad = 6371;
-            double c = 2 * asin(sqrt(a));
-
-            distance = rad * c;
-            */
+            
             distance = haversine(latitude, longitude, userLatitude, userLongitude);
             // Create car object
             Car car(latitude, longitude, distance, carID);
@@ -577,7 +564,7 @@ Image CropImage(Vector2u& globalPosition, int n)
     crop.create(2 * n * 31, 2 * n * 31, Color::Black);
 
     int cropX = 0, cropY = 0;
-    int testX = leftBound, testY = upBound; cout << testX << " " << testY;
+    int testX = leftBound, testY = upBound;
     for (int y = 0; y < 691; y++, testY++)
     {
         for (int x = 0; x < 760; x++, testX++)
