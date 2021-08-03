@@ -238,7 +238,6 @@ vector<Car> returnCars(Node* root, vector<Car>& cars) {
         cars.push_back(root->car);
         returnCars(root->right, cars);
     }
-    cout << cars.size();
     return cars;
 }
 
@@ -325,7 +324,6 @@ vector<Car> FindCars(double userLatitude, double userLongitude, double inputDist
             // Create car object
             Car car(latitude, longitude, distance, carID);
             
-            cout << distance << " ";
             // Add car if it falls within the radius
             if (inputDistance > distance) {
                 carMap.emplace(distance, car);
@@ -350,7 +348,6 @@ vector<Car> FindCars(double userLatitude, double userLongitude, double inputDist
 
     // Print out cars within radius
     for (unsigned int i = 0; i < radiusCars.size(); i++) {
-        cout << radiusCars[i].GetDistance() << endl;
     }
 
     return radiusCars;
@@ -372,11 +369,9 @@ vector<Car> AVLTree(double x, double y, int maxDist) {
         int chk = 0;
         while (getline(inFS, line)) {
             istringstream stream(line);
-            cout << ++chk << " ";
             // latitude
             getline(stream, temp, ',');
             latitude = stod(temp);
-            cout << latitude << " ";
 
             // longitude
             getline(stream, temp, ',');
@@ -425,7 +420,6 @@ vector<Car> AVLTree(double x, double y, int maxDist) {
             ++searchCount;
             if (foundCount == 150 || searchCount == 4000) {
                 inFS.close();
-                cout << "         " << cars.size();
                 return returnCars(node, cars);
             }
         }
